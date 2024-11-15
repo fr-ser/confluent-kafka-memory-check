@@ -120,6 +120,24 @@ protobuf = ["protobuf", "requests"]
 schema-registry = ["requests"]
 
 [[package]]
+name = "kafka-python-ng"
+version = "2.2.3"
+description = "Pure Python client for Apache Kafka"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "kafka_python_ng-2.2.3-py2.py3-none-any.whl", hash = "sha256:adc6e82147c441ca4ae1f22e291fc08efab0d10971cbd4aa1481d2ffa38e9480"},
+    {file = "kafka_python_ng-2.2.3.tar.gz", hash = "sha256:f79f28e10ade9b5a9860b2ec15b7cc8dc510d5702f5a399430478cff5f93a05a"},
+]
+
+[package.extras]
+boto = ["botocore"]
+crc32c = ["crc32c"]
+lz4 = ["lz4"]
+snappy = ["python-snappy"]
+zstd = ["zstandard"]
+
+[[package]]
 name = "packaging"
 version = "24.2"
 description = "Core utilities for Python packages"
@@ -174,4 +192,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "9d2d87b46ca1aee88d55499ea51c444bc62fcb07e87625a0bac91f2aaa8a7baa"
+content-hash = "b7ca567d1bf5c5474cfb1f0ea47d0257a97d1ee2b7f62bc8394890c342abb978"

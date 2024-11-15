@@ -16,6 +16,8 @@ This investigation was about a Confluent Kafka consumer not releasing memory aft
 
 The observations are based on the output below.
 
+As all consumers behave the same way it stands to reason that the issue is with Python itself.
+
 Confluent:
 
 - The simple consumer takes about 20MB of memory in an idle state in the beginning.
@@ -25,6 +27,7 @@ Confluent:
 Other consumers:
 
 - AIOKafka behaves the same
+- Kafka-Python behaves the same
 
 ## Outputs
 
@@ -155,6 +158,49 @@ Result:
 2024-11-15 13:15:16.770059 process memory: 51.2 Mib - messages processed: 0
 2024-11-15 13:15:18.775736 process memory: 51.2 Mib - messages processed: 0
 2024-11-15 13:15:20.778798 process memory: 51.2 Mib - messages processed: 0
+```
+
+### KafkaPython - default settings
+
+```txt
+2024-11-15 13:47:21.083595 process memory: 26.7 Mib - messages processed: 0
+2024-11-15 13:47:23.091339 process memory: 26.7 Mib - messages processed: 0
+2024-11-15 13:47:25.097271 process memory: 26.7 Mib - messages processed: 0
+2024-11-15 13:47:27.104497 process memory: 26.7 Mib - messages processed: 0
+2024-11-15 13:47:28.195669 process memory: 35.6 Mib - messages processed: 10001
+2024-11-15 13:47:29.286878 process memory: 40.9 Mib - messages processed: 10000
+2024-11-15 13:47:30.383573 process memory: 40.2 Mib - messages processed: 10000
+2024-11-15 13:47:31.472662 process memory: 44.3 Mib - messages processed: 10000
+2024-11-15 13:47:32.552541 process memory: 49.0 Mib - messages processed: 10000
+2024-11-15 13:47:33.644380 process memory: 50.1 Mib - messages processed: 10000
+2024-11-15 13:47:34.730855 process memory: 50.1 Mib - messages processed: 10000
+2024-11-15 13:47:35.825246 process memory: 51.2 Mib - messages processed: 10000
+2024-11-15 13:47:36.912617 process memory: 51.3 Mib - messages processed: 10000
+2024-11-15 13:47:38.002072 process memory: 51.3 Mib - messages processed: 10000
+2024-11-15 13:47:39.082734 process memory: 53.4 Mib - messages processed: 10000
+2024-11-15 13:47:40.168931 process memory: 53.4 Mib - messages processed: 10000
+2024-11-15 13:47:41.260640 process memory: 53.5 Mib - messages processed: 10000
+2024-11-15 13:47:42.345631 process memory: 53.8 Mib - messages processed: 10000
+2024-11-15 13:47:43.433800 process memory: 55.3 Mib - messages processed: 10000
+2024-11-15 13:47:44.523904 process memory: 55.3 Mib - messages processed: 10000
+2024-11-15 13:47:45.608605 process memory: 55.4 Mib - messages processed: 10000
+2024-11-15 13:47:46.698196 process memory: 55.4 Mib - messages processed: 10000
+2024-11-15 13:47:47.785388 process memory: 55.4 Mib - messages processed: 10000
+2024-11-15 13:47:48.867558 process memory: 55.4 Mib - messages processed: 9999
+2024-11-15 13:47:50.878441 process memory: 55.4 Mib - messages processed: 0
+2024-11-15 13:47:52.885425 process memory: 55.4 Mib - messages processed: 0
+2024-11-15 13:47:54.893585 process memory: 55.4 Mib - messages processed: 0
+2024-11-15 13:47:56.900658 process memory: 55.4 Mib - messages processed: 0
+2024-11-15 13:47:58.908779 process memory: 55.4 Mib - messages processed: 0
+2024-11-15 13:48:00.916687 process memory: 55.4 Mib - messages processed: 0
+2024-11-15 13:48:02.919810 process memory: 55.4 Mib - messages processed: 0
+2024-11-15 13:48:04.927758 process memory: 55.4 Mib - messages processed: 0
+2024-11-15 13:48:06.931040 process memory: 55.4 Mib - messages processed: 0
+2024-11-15 13:48:08.935686 process memory: 55.4 Mib - messages processed: 0
+2024-11-15 13:48:10.943931 process memory: 55.4 Mib - messages processed: 0
+2024-11-15 13:48:12.950100 process memory: 55.4 Mib - messages processed: 0
+2024-11-15 13:48:14.953895 process memory: 55.4 Mib - messages processed: 0
+2024-11-15 13:48:16.960845 process memory: 55.4 Mib - messages processed: 0
 ```
 
 ## Helpful commands
