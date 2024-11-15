@@ -16,13 +16,19 @@ This investigation was about a Confluent Kafka consumer not releasing memory aft
 
 The observations are based on the output below.
 
+Confluent:
+
 - The simple consumer takes about 20MB of memory in an idle state in the beginning.
 - The memory during consuming a large backlog of messages increases (76MB).
 - The memory goes down (46MB) after the backlog is processed, but it does not go back to the idle state.
 
+Other consumers:
+
+- AIOKafka behaves the same
+
 ## Outputs
 
-### Default settings
+### Confluent - Default settings
 
 ```txt
 2024-11-15 12:58:53.861962 process memory: 19.4 Mib - messages processed: 0
@@ -52,7 +58,7 @@ The observations are based on the output below.
 2024-11-15 12:59:29.238706 process memory: 45.9 Mib - messages processed: 0
 ```
 
-### With additional settings to lower memory
+### Confluent - With additional settings to lower memory
 
 Adding these settings
 
@@ -105,6 +111,50 @@ Result:
 2024-11-15 13:02:35.406112 process memory: 41.5 Mib - messages processed: 0
 2024-11-15 13:02:37.413001 process memory: 41.5 Mib - messages processed: 0
 2024-11-15 13:02:39.423278 process memory: 41.5 Mib - messages processed: 0
+```
+
+### AIOKafka - default settings
+
+```txt
+2024-11-15 13:14:24.368988 process memory: 26.7 Mib - messages processed: 0
+2024-11-15 13:14:26.372269 process memory: 26.8 Mib - messages processed: 0
+2024-11-15 13:14:28.377425 process memory: 27.0 Mib - messages processed: 0
+2024-11-15 13:14:29.668725 process memory: 27.0 Mib - messages processed: 1
+2024-11-15 13:14:30.726755 process memory: 34.1 Mib - messages processed: 10000
+2024-11-15 13:14:31.783996 process memory: 39.7 Mib - messages processed: 10000
+2024-11-15 13:14:32.838416 process memory: 40.3 Mib - messages processed: 10000
+2024-11-15 13:14:33.893997 process memory: 41.8 Mib - messages processed: 10000
+2024-11-15 13:14:34.945454 process memory: 43.5 Mib - messages processed: 10000
+2024-11-15 13:14:36.009189 process memory: 45.7 Mib - messages processed: 10000
+2024-11-15 13:14:37.055374 process memory: 45.7 Mib - messages processed: 10000
+2024-11-15 13:14:38.107253 process memory: 46.8 Mib - messages processed: 10000
+2024-11-15 13:14:39.161762 process memory: 46.8 Mib - messages processed: 10000
+2024-11-15 13:14:40.214951 process memory: 48.0 Mib - messages processed: 10000
+2024-11-15 13:14:41.267444 process memory: 48.0 Mib - messages processed: 10000
+2024-11-15 13:14:42.296582 process memory: 48.0 Mib - messages processed: 10000
+2024-11-15 13:14:43.350355 process memory: 48.0 Mib - messages processed: 10000
+2024-11-15 13:14:44.395915 process memory: 51.0 Mib - messages processed: 10000
+2024-11-15 13:14:45.448427 process memory: 51.0 Mib - messages processed: 10000
+2024-11-15 13:14:46.509665 process memory: 51.1 Mib - messages processed: 10000
+2024-11-15 13:14:47.556084 process memory: 51.1 Mib - messages processed: 10000
+2024-11-15 13:14:48.607270 process memory: 52.1 Mib - messages processed: 10000
+2024-11-15 13:14:49.661793 process memory: 53.1 Mib - messages processed: 10000
+2024-11-15 13:14:50.710564 process memory: 53.1 Mib - messages processed: 9999
+2024-11-15 13:14:52.720750 process memory: 51.1 Mib - messages processed: 0
+2024-11-15 13:14:54.726627 process memory: 51.1 Mib - messages processed: 0
+2024-11-15 13:14:56.733809 process memory: 51.1 Mib - messages processed: 0
+2024-11-15 13:14:58.738571 process memory: 51.1 Mib - messages processed: 0
+2024-11-15 13:15:00.744128 process memory: 51.2 Mib - messages processed: 0
+2024-11-15 13:15:02.747440 process memory: 51.2 Mib - messages processed: 0
+2024-11-15 13:15:04.748915 process memory: 51.2 Mib - messages processed: 0
+2024-11-15 13:15:06.754527 process memory: 51.2 Mib - messages processed: 0
+2024-11-15 13:15:08.757089 process memory: 51.2 Mib - messages processed: 0
+2024-11-15 13:15:10.760113 process memory: 51.2 Mib - messages processed: 0
+2024-11-15 13:15:12.762348 process memory: 51.2 Mib - messages processed: 0
+2024-11-15 13:15:14.763120 process memory: 51.2 Mib - messages processed: 0
+2024-11-15 13:15:16.770059 process memory: 51.2 Mib - messages processed: 0
+2024-11-15 13:15:18.775736 process memory: 51.2 Mib - messages processed: 0
+2024-11-15 13:15:20.778798 process memory: 51.2 Mib - messages processed: 0
 ```
 
 ## Helpful commands
