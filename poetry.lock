@@ -138,6 +138,20 @@ snappy = ["python-snappy"]
 zstd = ["zstandard"]
 
 [[package]]
+name = "objgraph"
+version = "3.6.2"
+description = "Draws Python object reference graphs with graphviz"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "objgraph-3.6.2-py3-none-any.whl", hash = "sha256:8114c97712291c3ba30d882406a384d0a7651b307ea9a06e0d83836ccde85e15"},
+    {file = "objgraph-3.6.2.tar.gz", hash = "sha256:00b9f2f40f7422e3c7f45a61c4dafdaf81f03ff0649d6eaec866f01030e51ad8"},
+]
+
+[package.extras]
+ipython = ["graphviz"]
+
+[[package]]
 name = "packaging"
 version = "24.2"
 description = "Core utilities for Python packages"
@@ -192,4 +206,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "b7ca567d1bf5c5474cfb1f0ea47d0257a97d1ee2b7f62bc8394890c342abb978"
+content-hash = "3e4897772ddfa93f05d2bcd4b66ffcd9ed5498c94cb0b7e36327f47fe089c236"

@@ -203,6 +203,50 @@ Result:
 2024-11-15 13:48:16.960845 process memory: 55.4 Mib - messages processed: 0
 ```
 
+### AIOKafka - defaults with object graph
+
+```txt
+2024-11-21 14:53:42.743673 process memory: 29.7 Mib for PID 56358 - messages processed: 0
+function                   5188
+tuple                      3760
+dict                       2706
+ReferenceType              1619
+wrapper_descriptor         1353
+builtin_function_or_method 1089
+method_descriptor          1037
+getset_descriptor          868
+type                       824
+cell                       758
+
+...
+
+2024-11-21 14:54:32.768141 process memory: 60.3 Mib for PID 56358 - messages processed: 10000
+ConsumerRecord             10000
+function                   5186
+tuple                      3581
+dict                       2625
+ReferenceType              1637
+wrapper_descriptor         1353
+builtin_function_or_method 1106
+method_descriptor          1037
+getset_descriptor          868
+type                       824
+
+...
+
+2024-11-21 14:54:54.044112 process memory: 58.3 Mib for PID 56358 - messages processed: 0
+function                   5188
+tuple                      3587
+dict                       2624
+ReferenceType              1637
+wrapper_descriptor         1353
+builtin_function_or_method 1107
+method_descriptor          1037
+getset_descriptor          868
+type                       824
+cell                       758
+```
+
 ## Helpful commands
 
 These commands assume the kafka-cli to be installed

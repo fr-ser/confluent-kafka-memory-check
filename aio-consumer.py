@@ -16,7 +16,9 @@ async def consume():
     try:
         while True:
             result = await consumer.getmany(timeout_ms=1_000, max_records=15_000)
-            print_current_memory_usage(sum(len(item[1]) for item in result.items()))
+            print_current_memory_usage(
+                sum(len(item[1]) for item in result.items()), True
+            )
             time.sleep(1)  # simulating some processing time
     finally:
         await consumer.stop()
